@@ -39,18 +39,9 @@
                     <b class="logo-icon">
                         <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                         <!-- Dark Logo icon -->
-                        <img src="{{asset('contents/admin')}}/assets/images/logos/logo-icon.png" alt="homepage" class="dark-logo" />
-                        <!-- Light Logo icon -->
-                        <img src="{{asset('contents/admin')}}/assets/images/logos/logo-light-icon.png" alt="homepage" class="light-logo" />
+                        <img class="img-fluid" src="{{asset('contents/admin')}}/assets/images/logos/logo-icon.png" alt="homepage" class="dark-logo" />
                     </b>
                     <!--End Logo icon -->
-                    <!-- Logo text -->
-                    <span class="logo-text">
-                        <!-- dark Logo text -->
-                        <img src="{{asset('contents/admin')}}/assets/images/logos/logo-text.png" alt="homepage" class="dark-logo" />
-                        <!-- Light Logo text -->
-                        <img src="{{asset('contents/admin')}}/assets/images/logos/logo-light-text.png" class="light-logo" alt="homepage" />
-                    </span>
                 </a>
 
                 <!-- End Logo -->
@@ -147,6 +138,8 @@
                             <span class="hide-menu">Dashboard</span>
                         </a>
                     </li>
+                    @if (Auth::user()->role_id===1)
+                        
                      <li class="sidebar-item">
                         <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                             <i class="mdi mdi-cart-outline"></i>
@@ -192,57 +185,6 @@
                             @endif
                         </a>
                     </li> -->
-                    <li class="sidebar-item">
-                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
-                            <i class="mdi mdi-filter-variant"></i>
-                            <span class="hide-menu">Products</span>
-                        </a>
-                        <ul aria-expanded="false" class="collapse first-level">
-                            <li class="sidebar-item">
-                                <a href="{{url('/admin/products/create')}}" class="sidebar-link">
-                                    <i class="mdi mdi-plus-circle-outline"></i>
-                                    <span class="hide-menu">Add Product</span>
-                                </a>
-                            </li>
-                            <li class="sidebar-item">
-                                <a href="{{url('/admin/products')}}" class="sidebar-link">
-                                    <i class="fab fa-product-hunt"></i>
-                                    <span class="hide-menu">All Products</span>
-                                    <span class="badge badge-info badge-pill ml-auto mr-3 font-medium px-2 py-1">{{$totalProduct}}</span>
-                                </a>
-                            </li>
-                            <!-- <li class="sidebar-item">
-                                <a href="{{url('/admin/products/topsale')}}" class="sidebar-link">
-                                    <i class="fab fa-product-hunt"></i>
-                                    <span class="hide-menu">Top Sale Products</span>
-                                    <span class="badge badge-warning text-white badge-pill ml-auto mr-3 font-medium px-2 py-1">{{$topSaleProduct}}</span>
-                                </a>
-                            </li> -->
-                            <!-- <li class="sidebar-item">
-                                <a href="{{url('/admin/products/draft')}}" class="sidebar-link">
-                                    <i class="fab fa-product-hunt"></i>
-                                    <span class="hide-menu">Draft Products</span>
-                                    <span class="badge badge-warning text-white badge-pill ml-auto mr-3 font-medium px-2 py-1">{{$draftProduct}}</span>
-                                </a>
-                            </li> -->
-                            <!-- <li class="sidebar-item">
-                                <a href="{{url('/admin/products/stockout')}}" class="sidebar-link">
-                                    <i class="fab fa-product-hunt"></i>
-                                    <span class="hide-menu">Stock out Products</span>
-                                    <span class="badge badge-danger text-white badge-pill ml-auto mr-3 font-medium px-2 py-1">{{$stockoutProduct}}</span>
-                                </a>
-                            </li> -->
-                            @foreach($types as $type)
-                            <li class="sidebar-item">
-                                <a href="{{url('/admin/products/type/'. $type->slug)}}" class="sidebar-link">
-                                    <i class="fab fa-product-hunt"></i>
-                                    <span class="hide-menu">{{$type->name}}</span>
-                                    <span class="badge badge-info text-white badge-pill ml-auto mr-3 font-medium px-2 py-1"> {{App\Type::find($type->id)->products()->count()}}</span>
-                                </a>
-                            </li>
-                            @endforeach
-                        </ul>
-                    </li>
                     <li class="sidebar-item">
                         <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                             <i class="mdi mdi-filter-variant"></i>
@@ -330,7 +272,6 @@
                             </li>
                         </ul>
                     </li>
-                    @if(Auth::user()->role->id == 1)
                     <li class="sidebar-item">
                         <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                             <i class="mdi mdi-recycle"></i>
@@ -375,7 +316,6 @@
                             </li>
                         </ul>
                     </li>
-                    @endif
                     <li class="sidebar-item">
                         <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
                             <i class="mdi mdi-settings"></i>
@@ -396,6 +336,60 @@
                             </li>
                         </ul>
                     </li>
+                    @endif
+                    @if (Auth::user()->role_id===4)
+                    <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                            <i class="mdi mdi-filter-variant"></i>
+                            <span class="hide-menu">Products</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse first-level">
+                            <li class="sidebar-item">
+                                <a href="{{url('/admin/products/create')}}" class="sidebar-link">
+                                    <i class="mdi mdi-plus-circle-outline"></i>
+                                    <span class="hide-menu">Add Product</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{{url('/admin/products')}}" class="sidebar-link">
+                                    <i class="fab fa-product-hunt"></i>
+                                    <span class="hide-menu">All Products</span>
+                                    <span class="badge badge-info badge-pill ml-auto mr-3 font-medium px-2 py-1">{{$totalProduct}}</span>
+                                </a>
+                            </li>
+                            <!-- <li class="sidebar-item">
+                                <a href="{{url('/admin/products/topsale')}}" class="sidebar-link">
+                                    <i class="fab fa-product-hunt"></i>
+                                    <span class="hide-menu">Top Sale Products</span>
+                                    <span class="badge badge-warning text-white badge-pill ml-auto mr-3 font-medium px-2 py-1">{{$topSaleProduct}}</span>
+                                </a>
+                            </li> -->
+                            <!-- <li class="sidebar-item">
+                                <a href="{{url('/admin/products/draft')}}" class="sidebar-link">
+                                    <i class="fab fa-product-hunt"></i>
+                                    <span class="hide-menu">Draft Products</span>
+                                    <span class="badge badge-warning text-white badge-pill ml-auto mr-3 font-medium px-2 py-1">{{$draftProduct}}</span>
+                                </a>
+                            </li> -->
+                            <!-- <li class="sidebar-item">
+                                <a href="{{url('/admin/products/stockout')}}" class="sidebar-link">
+                                    <i class="fab fa-product-hunt"></i>
+                                    <span class="hide-menu">Stock out Products</span>
+                                    <span class="badge badge-danger text-white badge-pill ml-auto mr-3 font-medium px-2 py-1">{{$stockoutProduct}}</span>
+                                </a>
+                            </li> -->
+                            @foreach($types as $type)
+                            <li class="sidebar-item">
+                                <a href="{{url('/admin/products/type/'. $type->slug)}}" class="sidebar-link">
+                                    <i class="fab fa-product-hunt"></i>
+                                    <span class="hide-menu">{{$type->name}}</span>
+                                    <span class="badge badge-info text-white badge-pill ml-auto mr-3 font-medium px-2 py-1"> {{App\Type::find($type->id)->products()->count()}}</span>
+                                </a>
+                            </li>
+                            @endforeach
+                        </ul>
+                    </li>
+                    @endif
                     <li class="sidebar-item">
                         <a target="_blank" class="sidebar-link waves-effect waves-dark" href="{{url('/')}}" aria-expanded="false">
                             <i class="mdi mdi-earth"></i>

@@ -1,11 +1,12 @@
 @extends('layouts.app')
 @section('title', 'Login')
 @section('content')
+    <style>span.db{width:60%;display: inline-block;}</style>
     <div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background:url({{asset('contents/admin')}}/assets/images/big/auth-bg.jpg) no-repeat center center;">
         <div class="auth-box">
             <div id="loginform">
                 <div class="logo">
-                    <span class="db"><img src="{{asset('contents/admin')}}/assets/images/logos/logo-icon.png" alt="logo" /></span>
+                    <span class="db"><img class="img-fluid" src="{{asset('contents/admin')}}/assets/images/logos/logo-icon.png" alt="logo" /></span>
                     <h5 class="font-medium mb-3">Sign In to Admin</h5>
                 </div>
                 <!-- Form -->
