@@ -242,6 +242,9 @@ $("#select2-with-sizes").select2({
 $("#select2-with-types").select2({
     tags: true
 });
+$("#select2-with-brands").select2({
+    tags: true
+});
 //***********************************//
 // Automatic tokenization
 //***********************************//

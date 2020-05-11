@@ -389,6 +389,35 @@
                             @endforeach
                         </ul>
                     </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
+                            <i class="mdi mdi-filter-variant"></i>
+                            <span class="hide-menu">Product Categories</span>
+                        </a>
+                        <ul aria-expanded="false" class="collapse first-level">
+                            <li class="sidebar-item">
+                                <a href="{{url('admin/maincategory')}}" class="sidebar-link">
+                                    <i class="mdi mdi-tag-outline"></i>
+                                    <span class="hide-menu">Main Categories</span>
+                                    <span class="badge badge-info badge-pill ml-auto mr-3 font-medium px-2 py-1">{{$totalMaincategory}}</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{{url('admin/subcategory')}}" class="sidebar-link">
+                                    <i class="mdi mdi-tag-multiple"></i>
+                                    <span class="hide-menu">Subcategories</span>
+                                    <span class="badge badge-info badge-pill ml-auto mr-3 font-medium px-2 py-1">{{$totalSubcategory}}</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{{url('admin/category')}}" class="sidebar-link">
+                                    <i class="mdi mdi-tag-outline"></i>
+                                    <span class="hide-menu">Categories</span>
+                                    <span class="badge badge-info badge-pill ml-auto mr-3 font-medium px-2 py-1">{{$totalCategory}}</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     @endif
                     <li class="sidebar-item">
                         <a target="_blank" class="sidebar-link waves-effect waves-dark" href="{{url('/')}}" aria-expanded="false">

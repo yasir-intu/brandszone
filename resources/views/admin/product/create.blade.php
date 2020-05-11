@@ -108,8 +108,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="control-label">Brand</label>
-                                            <select name="brand" class="form-control" data-placeholder="Choose a Category" tabindex="1">
-                                                <option value="">Select Brand</option>
+                                            <select name="types[]" class="form-control" multiple="" id="select2-with-brands" style="width: 100%;height: 36px;">
                                                 @foreach($brands as $brand)
                                                 <option value="{{$brand->id}}">{{$brand->name}}</option>
                                                 @endforeach
