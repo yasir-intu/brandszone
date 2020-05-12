@@ -86,7 +86,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="control-label">Sub Categories</label>
-                                            <select name="subcategories[]" class="form-control" multiple="" id="" style="width: 100%;height: 36px;">
+                                            <select name="subcategories[]" class="form-control" multiple="" id="select2-with-subcategories" style="width: 100%;height: 36px;">
                                                 @foreach($subcategories as $subcategory)
                                                 <option value="{{$subcategory->id}}">{{$subcategory->name}}</option>
                                                 @endforeach
@@ -115,16 +115,10 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <!--/span-->
-                                </div>
-                                <!--/row-->
-
-                                <!--/row-->
-                                <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="control-label">Brand</label>
-                                            <select name="types[]" class="form-control" multiple="" id="select2-with-brands" style="width: 100%;height: 36px;">
+                                            <select name="brand[]" class="form-control" multiple="" id="select2-with-brands" style="width: 100%;height: 36px;">
                                                 @foreach($brands as $brand)
                                                 <option value="{{$brand->id}}">{{$brand->name}}</option>
                                                 @endforeach
@@ -137,6 +131,12 @@
                                             @endif
                                         </div>
                                     </div>
+                                    <!--/span-->
+                                </div>
+                                <!--/row-->
+
+                                <!--/row-->
+                                <div class="row">
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="control-label">Colors</label>
@@ -170,29 +170,6 @@
                                             @endif
                                         </div>
                                     </div>
-                                    <!--/span-->
-                                </div>
-                                <!--/row-->
-
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label>Price</label>
-                                            <div class="input-group mb-3">
-                                                <div class="input-group-prepend">
-                                                    <span class="input-group-text" id="basic-addon1"><i class="ti-money"></i></span>
-                                                </div>
-                                                <input name="price" type="text" class="form-control" placeholder="price" value="{{old('price')}}">
-
-                                                @if ($errors->has('price'))
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('price') }}</strong>
-                                                </span>
-                                                @endif
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--/span-->
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Discount</label>
@@ -201,6 +178,45 @@
                                                     <span class="input-group-text" id="basic-addon2"><i class="ti-cut"></i></span>
                                                 </div>
                                                 <input name="discount" type="text" class="form-control" placeholder="Discount" value="{{old('discount')}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
+                                <!--/row-->
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Purchase Price</label>
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="basic-addon1"><i class="ti-money"></i></span>
+                                                </div>
+                                                <input name="purchase_price" type="text" class="form-control" placeholder="Purchase Price" value="{{old('purchase_price')}}">
+
+                                                @if ($errors->has('purchase_price'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('purchase_price') }}</strong>
+                                                </span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Selling Price</label>
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="basic-addon1"><i class="ti-money"></i></span>
+                                                </div>
+                                                <input name="selling_price" type="text" class="form-control" placeholder="Selling Price" value="{{old('selling_price')}}">
+                                                @if ($errors->has('selling_price'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('selling_price') }}</strong>
+                                                </span>
+                                                @endif
                                             </div>
                                         </div>
                                     </div>
@@ -229,13 +245,22 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text" id="basic-addon2"><i class="ti-server"></i></span>
                                                 </div>
-                                                <input name="stock-alert" type="text" class="form-control" placeholder="Stock alert" value="{{old('stock-alert')}}">
+                                                <input name="stock_alert" type="text" class="form-control" placeholder="Stock alert" value="{{old('stock_alert')}}">
 
-                                                @if ($errors->has('stock-alert'))
+                                                @if ($errors->has('stock_alert'))
                                                 <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $errors->first('stock-alert') }}</strong>
+                                                    <strong>{{ $errors->first('stock_alert') }}</strong>
                                                 </span>
                                                 @endif
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label></label>
+                                            <div class="input-group mt-3">
+                                                <span>Customer will see this Price:</span>
+                                                <span></span>
                                             </div>
                                         </div>
                                     </div>
@@ -272,9 +297,9 @@
                                         <h5 class="card-title mt-3">Product Image</h5>
                                         <input name="image_two" type="file" id="input-file-now" class="dropify" data-max-file-size="3M">
 
-                                        @if ($errors->has('image1'))
+                                        @if ($errors->has('image_two'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('image1') }}</strong>
+                                            <strong>{{ $errors->first('image_two') }}</strong>
                                         </span>
                                         @endif
                                     </div>
@@ -282,9 +307,9 @@
                                         <h5 class="card-title mt-3">Product Image</h5>
                                         <input name="image_three" type="file" id="input-file-now" class="dropify" data-max-file-size="3M">
 
-                                        @if ($errors->has('image2'))
+                                        @if ($errors->has('image_three'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('image2') }}</strong>
+                                            <strong>{{ $errors->first('image_three') }}</strong>
                                         </span>
                                         @endif
                                     </div>
@@ -292,9 +317,9 @@
                                         <h5 class="card-title mt-3">Product Image</h5>
                                         <input name="image_four" type="file" id="input-file-now" class="dropify" data-max-file-size="3M">
 
-                                        @if ($errors->has('image3'))
+                                        @if ($errors->has('image_four'))
                                         <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $errors->first('image3') }}</strong>
+                                            <strong>{{ $errors->first('image_four') }}</strong>
                                         </span>
                                         @endif
                                     </div>
