@@ -206,14 +206,30 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label>Stock Alert</label>
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text" id="basic-addon2"><i class="ti-server"></i></span>
+                                                </div>
+                                                <input name="stock-alert" type="text" class="form-control" placeholder="Stock alert" value="{{old('stock-alert')}}">
+
+                                                @if ($errors->has('stock-alert'))
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $errors->first('stock-alert') }}</strong>
+                                                </span>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <h5 class="card-title">Product Description</h5>
                                 <div class="row">
                                     <div class="col-md-12 ">
                                         <div class="form-group">
-                                            <textarea name="description" class="form-control" rows="4">{{old('description')}}</textarea>
-
+                                            <textarea name="description" id="description">{{old('description')}}</textarea>
                                             @if ($errors->has('description'))
                                             <span class="invalid-feedback" role="alert">
                                                 <strong>{{ $errors->first('description') }}</strong>
@@ -283,27 +299,9 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label>Status</label>
-                                            <br/>
-                                            <div class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" id="customRadioInline1" name="status" class="custom-control-input" checked>
-                                                <label class="custom-control-label" for="customRadioInline1">Publish</label>
-                                            </div>
-                                            <div class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" id="customRadioInline2" name="status" class="custom-control-input">
-                                                <label class="custom-control-label" for="customRadioInline2">Draft</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--/span-->
-                                </div>
                             </div>
                             <div class="form-actions mt-5 text-center">
-                                <button type="submit" class="btn btn-success">Create Product</button>
+                                <button type="submit" class="btn btn-success">Add Product</button>
                             </div>
                         </form>
                     </div>
@@ -327,6 +325,10 @@
         //TinyMCE
         tinymce.init({
             selector:'#features'
+        });
+
+        tinymce.init({
+            selector:'#description'
         });
     });
 </script>
