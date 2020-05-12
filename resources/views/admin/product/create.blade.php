@@ -85,6 +85,22 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <label class="control-label">Sub Categories</label>
+                                            <select name="subcategories[]" class="form-control" multiple="" id="" style="width: 100%;height: 36px;">
+                                                @foreach($subcategories as $subcategory)
+                                                <option value="{{$subcategory->id}}">{{$subcategory->name}}</option>
+                                                @endforeach
+                                            </select>
+
+                                            @if ($errors->has('subcategories'))
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $errors->first('subcategories') }}</strong>
+                                            </span>
+                                            @endif
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
                                             <label class="control-label">Categories</label>
                                             <select name="categories[]" class="form-control" multiple="" id="select2-with-categories" style="width: 100%;height: 36px;">
                                                 @foreach($categories as $category)
