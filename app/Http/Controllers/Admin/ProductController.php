@@ -11,6 +11,7 @@ use App\Maincategory;
 use App\Brand;
 use App\Color;
 use App\Size;
+use App\Subcategory;
 use Carbon\Carbon;
 use Session;
 use Image;
@@ -37,23 +38,27 @@ class ProductController extends Controller
     {
         $types = Type::active()->get();
         $maincategories = Maincategory::active()->get();
+        $subcategories = Subcategory::active()->get();
         $categories = Category::active()->get();
         $brands = Brand::active()->get();
         $colors = Color::active()->get();
         $sizes = Size::active()->get();
-        return view('admin.product.create', compact('types', 'maincategories', 'categories', 'brands', 'colors', 'sizes'));
+        return view('admin.product.create', compact('types', 'maincategories', 'subcategories', 'categories', 'brands', 'colors', 'sizes'));
     }
 
     public function store(Request $request)
     {
+        dd($request->all());
         $this->validate($request,
         [
             'name'       => 'required|string|max:255',
             'types'      => 'required',
             'maincategories' => 'required',
+            'subcategories' => 'required',
             'categories' => 'required',
             'brand'      => 'required',
-            'price'      => 'required',
+            'purchase_price'      => 'required',
+            'selling_price'      => 'required',
             'discount'      => 'nullable|integer',
             'stock'      => 'required|integer',
             'stock-alert'      => 'required|integer',
@@ -68,9 +73,11 @@ class ProductController extends Controller
             'name.max' => 'Name Should Contain 255 Character',
             'types.require' => 'Please Enter A Product Type',
             'maincategories.require' => 'Please Enter A Main Categories',
+            'subcategories.require' => 'Please Enter A Sub Categories',
             'categories.require' => 'Please Enter A Categories',
             'brand.require' => 'Please Enter A Brand',
-            'price.require' => 'Please Enter A Price',
+            'purchase_price.require' => 'Please Enter A Purchase Price',
+            'selling_price.require' => 'Please Enter A Selling Price',
             'discount.integer' => 'Discount Should Be Only In Percentage Number',
             'stock.require' => 'Please Enter Your Product Stock',
             'stock-alert.require' => 'Please Enter Your Product Stock Limit Alert',
@@ -173,11 +180,15 @@ class ProductController extends Controller
             $discount=$request->discount;
         }
 
+        $website_price = $request->seller_price+($request->seller_price*0.15);
+
         $product = new Product();
         $product->name = $request->name;
         $product->code = rand(000001, 1000000);
         $product->brand_id = $request->brand;
-        $product->price = $request->price;
+        $product->purchase_price = $request->purchase_price;
+        $product->seller_price = $request->seller_price;
+        $product->website_price = $website_price;
         $product->discount = $discount;
         $product->stock = $request->stock;
         $product->stock_alert = $request->stock_alert;
@@ -195,6 +206,7 @@ class ProductController extends Controller
         $create = $product->save();
 
         $product->maincategories()->attach($request->maincategories);
+        $product->subcategories()->attach($request->subcategories);
         $product->categories()->attach($request->categories);
         $product->colors()->attach($request->colors);
         $product->sizes()->attach($request->sizes);
