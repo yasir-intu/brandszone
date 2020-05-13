@@ -48,7 +48,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="control-label">Product Type</label>
-                                            <select name="types[]" class="form-control" multiple="" id="select2-with-types" style="width: 100%;height: 36px;">
+                                            <select name="types" class="form-control" multiple="" id="select2-with-types" style="width: 100%;height: 36px;">
                                                 @foreach($types as $type)
                                                 <option value="{{$type->id}}">{{$type->name}}</option>
                                                 @endforeach
@@ -70,7 +70,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="control-label">Main Categories</label>
-                                            <select name="maincategories[]" class="form-control" multiple="" id="select2-with-maincategories" style="width: 100%;height: 36px;">
+                                            <select name="maincategories" class="form-control" multiple="" id="select2-with-maincategories" style="width: 100%;height: 36px;">
                                                 @foreach($maincategories as $maincategory)
                                                 <option value="{{$maincategory->id}}">{{$maincategory->name}}</option>
                                                 @endforeach
@@ -86,7 +86,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="control-label">Sub Categories</label>
-                                            <select name="subcategories[]" class="form-control" multiple="" id="select2-with-subcategories" style="width: 100%;height: 36px;">
+                                            <select name="subcategories" class="form-control" multiple="" id="select2-with-subcategories" style="width: 100%;height: 36px;">
                                                 @foreach($subcategories as $subcategory)
                                                 <option value="{{$subcategory->id}}">{{$subcategory->name}}</option>
                                                 @endforeach
@@ -118,7 +118,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="control-label">Brand</label>
-                                            <select name="brand[]" class="form-control" multiple="" id="select2-with-brands" style="width: 100%;height: 36px;">
+                                            <select name="brand" class="form-control" multiple="" id="select2-with-brands" style="width: 100%;height: 36px;">
                                                 @foreach($brands as $brand)
                                                 <option value="{{$brand->id}}">{{$brand->name}}</option>
                                                 @endforeach
