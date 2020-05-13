@@ -228,10 +228,15 @@
 // Tagging support
 //***********************************//
 $("#select2-with-maincategories").select2({
-    tags: true
+    tags: true,
+    multiple: false,
+});
+$("#select2-with-subcategories").select2({
+    tags: true,
+    multiple: false,
 });
 $("#select2-with-categories").select2({
-    tags: true
+    tags: true,
 });
 $("#select2-with-colors").select2({
     tags: true
@@ -240,10 +245,12 @@ $("#select2-with-sizes").select2({
     tags: true
 });
 $("#select2-with-types").select2({
-    tags: true
+    tags: true,
+    multiple: false,
 });
 $("#select2-with-brands").select2({
-    tags: true
+    tags: true,
+    multiple: false,
 });
 //***********************************//
 // Automatic tokenization
