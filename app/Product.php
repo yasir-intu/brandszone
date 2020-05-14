@@ -53,5 +53,19 @@ class Product extends Model
     {
         return $this->belongsToMany('App\Type')->withTimestamps();
     }
+
+    public function info_stor()
+    {
+        return $this->hasMany('App\product_info_stor', 'pro_id', 'id');
+    }
+
+    public function color_stor()
+    {
+        return $this->hasMany('App\product_color_stor', 'pro_id', 'id');
+    }
+    public function size_stor()
+    {
+        return $this->hasMany('App\product_size_stor', 'pro_id', 'id');
+    }
     
 }
