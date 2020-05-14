@@ -42,7 +42,7 @@ class Order extends Model
     {
         return $query->whereYear('created_at', Carbon::now()->subYear()->year);
     }
-    public function products()
+    public function order_details()
     {
         return $this->hasMany('App\OrderDetail');
     }
