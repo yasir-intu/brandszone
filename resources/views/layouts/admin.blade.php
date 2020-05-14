@@ -391,29 +391,36 @@
                     </li>
                     <li class="sidebar-item">
                         <a class="sidebar-link has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false">
-                            <i class="mdi mdi-filter-variant"></i>
-                            <span class="hide-menu">Product Categories</span>
+                            <i class="mdi mdi-cart-outline"></i>
+                            <span class="hide-menu">Orders</span>
                         </a>
                         <ul aria-expanded="false" class="collapse first-level">
                             <li class="sidebar-item">
-                                <a href="{{url('admin/maincategory')}}" class="sidebar-link">
-                                    <i class="mdi mdi-tag-outline"></i>
-                                    <span class="hide-menu">Main Categories</span>
-                                    <span class="badge badge-info badge-pill ml-auto mr-3 font-medium px-2 py-1">{{$totalMaincategory}}</span>
+                                <a href="{{url('/admin/orders?status=today')}}" class="sidebar-link">
+                                    <i class="mdi mdi-cart"></i>
+                                    <span class="hide-menu">Today Orders</span>
+                                    <span class="badge badge-info badge-pill ml-auto mr-3 font-medium px-2 py-1">{{App\Order::today()->count()}}</span>
                                 </a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{url('admin/subcategory')}}" class="sidebar-link">
-                                    <i class="mdi mdi-tag-multiple"></i>
-                                    <span class="hide-menu">Subcategories</span>
-                                    <span class="badge badge-info badge-pill ml-auto mr-3 font-medium px-2 py-1">{{$totalSubcategory}}</span>
+                                <a href="{{url('/admin/orders?status=thismonth')}}" class="sidebar-link">
+                                    <i class="mdi mdi-cart"></i>
+                                    <span class="hide-menu">This Month Orders</span>
+                                    <span class="badge badge-info badge-pill ml-auto mr-3 font-medium px-2 py-1">{{App\Order::thismonth()->count()}}</span>
                                 </a>
                             </li>
                             <li class="sidebar-item">
-                                <a href="{{url('admin/category')}}" class="sidebar-link">
-                                    <i class="mdi mdi-tag-outline"></i>
-                                    <span class="hide-menu">Categories</span>
-                                    <span class="badge badge-info badge-pill ml-auto mr-3 font-medium px-2 py-1">{{$totalCategory}}</span>
+                                <a href="{{url('/admin/orders?status=thisyear')}}" class="sidebar-link">
+                                    <i class="mdi mdi-cart"></i>
+                                    <span class="hide-menu">This Year Orders</span>
+                                    <span class="badge badge-info badge-pill ml-auto mr-3 font-medium px-2 py-1">{{App\Order::thisyear()->count()}}</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a href="{{url('/admin/orders')}}" class="sidebar-link">
+                                    <i class="mdi mdi-cart"></i>
+                                    <span class="hide-menu">All Orders</span>
+                                    <span class="badge badge-info badge-pill ml-auto mr-3 font-medium px-2 py-1">{{$orders->count()}}</span>
                                 </a>
                             </li>
                         </ul>
