@@ -19,7 +19,8 @@ class BankController extends Controller{
     }
 
     public function index(){
-        return view('admin.bank.index');
+        $banks=Bank_Details::where('user_id', Auth::user()->id)->get();
+        return view('admin.bank.index', compact('banks'));
     }
 
     public function create(){
