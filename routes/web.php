@@ -57,7 +57,8 @@ Route::get('/delivery/method','CheckoutController@index')->name('');
 Route::post('/delivery/method','CheckoutController@store')->name('');
 // Order Confirm Route
 Route::get('/order/confirm','OrderController@index')->name('');
-Route::post('/order/confirm','OrderController@store')->name('');
+Route::post('/order/confirm','
+OrderController@store')->name('');
 Route::get('/order/success','OrderController@orderSuccess')->name('');
 
 // Website layout data compact
@@ -79,6 +80,11 @@ Auth::routes();
 
 Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'auth'], function (){
     Route::get('/','AdminController@index')->name('');
+    //Bank routes
+    Route::get('bank','BankController@index')->name('');
+    Route::get('bank/create','BankController@create')->name('');
+    Route::post('bank/create','BankController@add')->name('');
+    Route::get('bank/details/{id}','BankController@create')->name('');
     // Products Search route
     Route::get('search','SearchController@search')->name('');
     // Contact messages routes
@@ -87,9 +93,11 @@ Route::group(['prefix'=>'admin','namespace'=>'Admin','middleware'=>'auth'], func
     Route::delete('contacts/{contactmessage}','ContactController@destroy')->name('');
     // Order routes
     Route::get('orders','OrderController@index')->name('');
+    Route::get('deliveries','OrderController@deliveries_index')->name('');
     Route::get('orders/{order}','OrderController@show')->name('');
     Route::delete('orders/{order}','OrderController@destroy')->name('');
     Route::get('order/cancel/{order}','OrderController@orderCancel')->name('');
+    Route::get('order/stop/{order}','OrderController@orderStop')->name('');
     Route::get('order/delivered/{order}','OrderController@orderDelivered')->name('');
     Route::get('invoice/{order}','OrderController@invoice')->name('');
     // Customers routes
