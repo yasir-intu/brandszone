@@ -67,5 +67,22 @@ class Product extends Model
     {
         return $this->hasMany('App\product_size_stor', 'pro_id', 'id');
     }
-    
+    public function purchase()
+    {
+        return $this->hasMany('App\Purchase_Product', 'pro_id', 'id');
+    }
+    public function purchaseReturn()
+    {
+        return $this->hasMany('App\Purchase_Return', 'pro_id', 'id');
+    }
+
+    public function sale()
+    {
+        return $this->hasMany('App\Sale_Product', 'pro_id', 'id');
+    }
+
+    public function damage()
+    {
+        return $this->hasMany('App\Damaged_Product', 'pro_id', 'id');
+    }
 }
