@@ -11,7 +11,7 @@ class Bank_Details extends Model
     }
     
     public function branch(){
-        return $this->belongsTo('App\Bank', 'branch_id', 'id');
+        return $this->belongsTo('App\Bank_branch', 'branch_id', 'id');
     }
     
     public function country(){
