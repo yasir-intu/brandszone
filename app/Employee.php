@@ -17,4 +17,12 @@ class Employee extends Model
     public function country(){
         return $this->belongsTo('App\Country', 'country_id', 'id');
     }
+
+    public function departments(){
+        return $this->belongsTo('App\Department', 'department', 'id');
+    }
+    
+    public function designations(){
+        return $this->belongsTo('App\Designation', 'designation', 'id');
+    }
 }
