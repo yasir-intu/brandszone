@@ -11,6 +11,6 @@ class Account extends Model
     }
 
     public function employee(){
-        return $this->belongsTo('App\employee', 'account_id', 'id');
+        return $this->belongsTo('App\Employee', 'account_id', 'id');
     }
 }
