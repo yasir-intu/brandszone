@@ -18,10 +18,10 @@ class CheckoutController extends Controller
     public function index()
     {
         if(Session::has('payment_id')){
-            //$cities = City::active()->get();
+            $cities = City::where('status', 1)->get();
             $cities = [];
             $countries = [];
-            //$countries = Country::active()->get();
+            $countries = Country::where('status', 1)->get();
         	return view('website.checkout.delivery', compact('cities', 'countries'));
     	}else{
     		return back();
