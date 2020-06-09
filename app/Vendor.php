@@ -17,4 +17,8 @@ class Vendor extends Model
     public function country(){
         return $this->belongsTo('App\Country', 'country_id', 'id');
     }
+
+    public function product(){
+        return $this->hasMany('App\Purchase_Product', 'ven_id', 'id');
+    }
 }
