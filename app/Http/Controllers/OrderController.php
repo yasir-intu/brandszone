@@ -10,6 +10,7 @@ use App\Payment;
 use App\Order;
 use App\OrderDetail;
 use App\Product;
+use App\Sale_Product;
 
 class OrderController extends Controller
 {
@@ -34,7 +35,9 @@ class OrderController extends Controller
         $order = new Order();
         if(Session::has('customer_id')){
              $order->customer_id = Session::get('customer_id');
-         }else{
+             $order->guest_id = '0';
+            }else{
+                $order->customer_id = '0';
             $order->guest_id = Session::get('guest_id');
          }
         $order->shipping_id = Session::get('shipping_id');
@@ -57,9 +60,17 @@ class OrderController extends Controller
             $orderDetail->save();
 
             $product = Product::find($cartItem->id);
-            $product->stock = $product->stock - $cartItem->qty;
             $product->sales = $product->sales + $cartItem->qty;
             $update = $product->save();
+
+            $sale_slug='SEL_'.uniqid(2019);
+
+            $sale = new Sale_Product();
+            $sale->user_id = $product->creator;
+            $sale->pro_id = $cartItem->id;
+            $sale->stock = $cartItem->qty;
+            $sale->slug = $sale_slug;
+            $sale->save();
         }
 
         if($update){
