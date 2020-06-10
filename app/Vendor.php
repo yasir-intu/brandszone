@@ -21,4 +21,12 @@ class Vendor extends Model
     public function product(){
         return $this->hasMany('App\Purchase_Product', 'ven_id', 'id');
     }
+
+    public function purchase_return(){
+        return $this->hasMany('App\Purchase_Return', 'ven_id', 'id');
+    }
+
+    public function payment(){
+        return $this->hasMany('App\PaymentTransfer', 'account_id', 'id');
+    }
 }
