@@ -41,6 +41,10 @@ class Product extends Model
     {
         return $this->belongsToMany('App\Maincategory')->withTimestamps();
     }
+    public function subcategories()
+    {
+        return $this->belongsToMany('App\Subcategory')->withTimestamps();
+    }
     public function colors()
     {
         return $this->belongsToMany('App\Color')->withTimestamps();
