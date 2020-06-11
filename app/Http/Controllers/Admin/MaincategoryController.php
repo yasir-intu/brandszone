@@ -35,7 +35,7 @@ class MaincategoryController extends Controller
         ]);
 
         $maincategory = new Maincategory();
-        $maincategory->name = $request->name;
+        $maincategory->name = ucwords($request->name);
         $maincategory->slug = str_slug($request->name);
         $maincategory->status = (boolean)$request->status;
         $create = $maincategory->save();
